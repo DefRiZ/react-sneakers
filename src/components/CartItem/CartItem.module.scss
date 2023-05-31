@@ -1,0 +1,37 @@
+.root {
+  margin-bottom: 20px;
+  padding: 30px 20px;
+  border: 1px solid #f3f3f3;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+
+  .image {
+    margin-right: 20px;
+  }
+
+  .info {
+    .title {
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+    }
+
+    .price {
+      font-weight: 700;
+    }
+  }
+
+  .btn {
+    cursor: pointer;
+    margin-left: 20px;
+    opacity: 0.5;
+    &:hover {
+      opacity: 1;
+    }
+
+    &:active {
+      opacity: 0.8;
+    }
+  }
+}

@@ -1,0 +1,67 @@
+.border {
+  border-bottom: 1px solid #eaeaea;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 972px;
+  margin: 0 auto;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.blockRight {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .textBLock {
+    margin-left: 10px;
+  }
+
+  .logo {
+    max-width: 40px;
+    max-height: 40px;
+  }
+
+  .title {
+    font-weight: 700;
+    font-size: 20px;
+    margin-bottom: -9px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+    margin-left: 10px;
+  }
+}
+
+.blockLeft {
+  width: 196px;
+  display: flex;
+  justify-content: space-between;
+  .cart {
+    display: flex;
+    align-items: center;
+    .cart {
+      max-width: 20px;
+      max-height: 20px;
+      margin-right: 10px;
+    }
+    .cartText {
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 17px;
+    }
+  }
+  .favorite {
+    max-width: 20px;
+    max-height: 20px;
+  }
+  .user {
+    max-width: 20px;
+    max-height: 20px;
+  }
+}
