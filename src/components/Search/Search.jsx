@@ -2,8 +2,6 @@ import React from "react";
 
 import styles from "./Search.module.scss";
 
-import search from "../../img/search.svg";
-
 const Search = () => {
   return (
     <div className={styles.root}>

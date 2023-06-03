@@ -1,0 +1,19 @@
+.wrapper {
+  max-width: 972px;
+  margin: 0 auto;
+  padding-bottom: 20px;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.items {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+}

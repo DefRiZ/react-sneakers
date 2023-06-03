@@ -2,16 +2,48 @@ import React from "react";
 
 import Header from "../../components/Header/Header";
 import Banner from "../../components/Banner/Banner";
-import Shop from "../../components/Shop/Shop";
 import Drawer from "../../components/Drawer/Drawer";
+import Search from "../../components/Search/Search";
+import Item from "../../components/Item/Item";
+
+import styles from "./Main.module.scss";
+
+import { useSelector, useDispatch } from "react-redux";
+import { fetchShoes } from "../../store/slices/shoeSlice";
+import Skeleton from "../../components/Item/Skeleton";
 
 const Main = () => {
+  const dispatch = useDispatch();
+  const { items, status } = useSelector((state) => state.shoes);
+  React.useEffect(() => {
+    dispatch(fetchShoes());
+  }, [dispatch]);
+  // const [items, setItems] = React.useState([]);
+  // React.useEffect(() => {
+  //   fetch("https://647735539233e82dd53b26d5.mockapi.io/items")
+  //     .then((res) => res.json())
+  //     .then((arr) => {
+  //       setItems(arr);
+  //       console.log(arr);
+  //     });
+  // }, []);
+  const shoesList = items.map((obj) => <Item key={obj.id} {...obj} />);
+  const skeletonList = [...new Array(4)].map((_, i) => <Skeleton key={i} />);
   return (
     <div>
       <Header />
-      <Drawer />
+      {/* <Drawer /> */}
       <Banner />
-      <Shop />
+      <div className={styles.wrapper}>
+        <div className={styles.top}>
+          <h2>Все кроссовки</h2>
+          <Search />
+        </div>
+        <div className={styles.items}>
+          {status === "error" && <p>Попробуйте обновить страницу!</p>}
+          {status === "loading" ? skeletonList : shoesList}
+        </div>
+      </div>
     </div>
   );
 };
