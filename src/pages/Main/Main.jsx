@@ -18,15 +18,6 @@ const Main = () => {
   React.useEffect(() => {
     dispatch(fetchShoes());
   }, [dispatch]);
-  // const [items, setItems] = React.useState([]);
-  // React.useEffect(() => {
-  //   fetch("https://647735539233e82dd53b26d5.mockapi.io/items")
-  //     .then((res) => res.json())
-  //     .then((arr) => {
-  //       setItems(arr);
-  //       console.log(arr);
-  //     });
-  // }, []);
   const shoesList = items.map((obj) => <Item key={obj.id} {...obj} />);
   const skeletonList = [...new Array(4)].map((_, i) => <Skeleton key={i} />);
   return (
