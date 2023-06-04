@@ -6,12 +6,23 @@ import add from "../../img/btn-plus.svg";
 import added from "../../img/btn-checked.svg";
 import disable from "../../img/heart-unliked.svg";
 
+import { useDispatch, useSelector } from "react-redux";
+import { addItem } from "../../store/slices/cartSlice";
+
 const Item = ({ id, title, price, imageUrl }) => {
+  const dispatch = useDispatch();
+  // const { items } = useSelector((state) => state.cart);
   const [isAdded, setIsAdded] = React.useState(false);
 
-  const onChangeButton = () => {
-    console.log(isAdded);
-    setIsAdded(!isAdded);
+  const addButton = () => {
+    const item = {
+      id,
+      imageUrl,
+      price,
+      title,
+    };
+    dispatch(addItem(item));
+    setIsAdded(true);
   };
 
   return (
@@ -23,12 +34,12 @@ const Item = ({ id, title, price, imageUrl }) => {
       <h3 className={styles.title}>{title}</h3>
       <div className={styles.purchase}>
         <div className={styles.info}>
-          <text>Цена:</text>
+          <span>Цена:</span>
           <span>{price} руб.</span>
         </div>
         <button className={styles.button}>
           <img
-            onClick={() => onChangeButton()}
+            onClick={() => addButton()}
             src={isAdded === false ? add : added}
           />
         </button>

@@ -1,20 +1,23 @@
 import React from "react";
 
-import krosivok from "../../img/shoe.jpg";
 import remove from "../../img/remove-item.svg";
 
 import styles from "./CartItem.module.scss";
 
-const CartItem = () => {
+import { useSelector, useDispatch } from "react-redux";
+import { removeItem } from "../../store/slices/cartSlice";
+
+const CartItem = ({ id, title, price, imageUrl }) => {
+  const dispatch = useDispatch();
   return (
     <div className={styles.root}>
-      <img className={styles.image} src={krosivok} />
+      <img className={styles.image} src={imageUrl} />
       <div className={styles.info}>
-        <h2 className={styles.title}>Мужские Кроссовки Nike Air Max 270</h2>
-        <span className={styles.price}>12 999 руб.</span>
+        <h2 className={styles.title}>{title}</h2>
+        <span className={styles.price}>{price} руб.</span>
       </div>
       <btn className={styles.btn}>
-        <img src={remove} />
+        <img src={remove} onClick={() => dispatch(removeItem({ id }))} />
       </btn>
     </div>
   );

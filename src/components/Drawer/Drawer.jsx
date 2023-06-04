@@ -6,27 +6,39 @@ import CartItem from "../CartItem/CartItem";
 import arrow from "../../img/btn-arrow.svg";
 import remove from "../../img/remove-item.svg";
 
+import { useSelector, useDispatch } from "react-redux";
+import { changeDrawer } from "../../store/slices/cartSlice";
+
 const Drawer = () => {
+  const dispatch = useDispatch();
+  const { items, totalPrice, tax } = useSelector((state) => state.cart);
   return (
     <div className={styles.overlay}>
       <div className={styles.drawer}>
         <h2 className={styles.title}>
-          Корзина <img src={remove} className={styles.btnRemove} />
+          Корзина{" "}
+          <img
+            onClick={() => dispatch(changeDrawer())}
+            src={remove}
+            className={styles.btnRemove}
+          />
         </h2>
         <div className={styles.items}>
-          <CartItem />
+          {items.map((obj) => (
+            <CartItem key={obj.id} {...obj} />
+          ))}
         </div>
         <div className={styles.order}>
           <ul>
             <li className={styles.price}>
               <span>Итого: </span>
               <div className={styles.dashed}></div>
-              <span>21 498 руб. </span>
+              <span>{totalPrice + tax} руб. </span>
             </li>
             <li className={styles.price}>
               <span>Налог 5%: </span>
               <div className={styles.dashed}></div>
-              <span>1074 руб. </span>
+              <span>{tax} руб. </span>
             </li>
           </ul>
           <button className={styles.btn}>
