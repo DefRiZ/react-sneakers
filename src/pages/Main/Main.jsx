@@ -10,11 +10,14 @@ import styles from "./Main.module.scss";
 
 import { useSelector, useDispatch } from "react-redux";
 import { fetchShoes } from "../../store/slices/shoeSlice";
+
 import Skeleton from "../../components/Item/Skeleton";
 
 const Main = () => {
   const dispatch = useDispatch();
   const { items, status } = useSelector((state) => state.shoes);
+  const { isOpen } = useSelector((state) => state.cart);
+
   React.useEffect(() => {
     dispatch(fetchShoes());
   }, [dispatch]);
@@ -23,7 +26,7 @@ const Main = () => {
   return (
     <div>
       <Header />
-      {/* <Drawer /> */}
+      {isOpen && <Drawer />}
       <Banner />
       <div className={styles.wrapper}>
         <div className={styles.top}>

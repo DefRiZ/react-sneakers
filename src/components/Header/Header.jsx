@@ -1,13 +1,16 @@
 import React from "react";
 
 import logo from "../../img/logo.png";
-import cart from "../../img/cart.svg";
-import favorite from "../../img/favorite.svg";
-import user from "../../img/user.svg";
 
 import styles from "./Header.module.scss";
+import { useSelector, useDispatch } from "react-redux";
+import { changeDrawer } from "../../store/slices/cartSlice";
 
 const Header = () => {
+  const dispatch = useDispatch();
+
+  const { totalPrice, tax } = useSelector((state) => state.cart);
+
   return (
     <div className={styles.border}>
       <div className={styles.header}>
@@ -19,7 +22,10 @@ const Header = () => {
           </div>
         </div>
         <div className={styles.blockLeft}>
-          <button className={styles.cart}>
+          <button
+            onClick={() => dispatch(changeDrawer())}
+            className={styles.cart}
+          >
             <svg
               className={styles.cart}
               width="20"
@@ -50,7 +56,7 @@ const Header = () => {
                 stroke-linejoin="round"
               />
             </svg>
-            <span className={styles.cartText}>1205 руб.</span>
+            <span className={styles.cartText}>{totalPrice + tax} руб.</span>
           </button>
           <button>
             <svg
