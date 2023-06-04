@@ -15,12 +15,12 @@ const cartSlice = createSlice({
     addItem(state, action) {
       const findObj = state.items.find((obj) => obj.id === action.payload.id);
 
-      // if (findObj) {
-      //   alert("Товар уже добавлен в корзину!");
-      // } else {
-      //   state.items.push(action.payload);
-      // }
-      state.items.push(action.payload);
+      if (findObj) {
+        state.items.push({ ...action.payload, id: Math.random() * 100 });
+      } else {
+        state.items.push(action.payload);
+      }
+
       state.totalPrice = state.items.reduce((sum, obj) => {
         return sum + obj.price;
       }, 0);
