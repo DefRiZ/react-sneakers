@@ -3,6 +3,7 @@ import React from "react";
 import Header from "../../components/Header/Header";
 import Banner from "../../components/Banner/Banner";
 import Drawer from "../../components/Drawer/Drawer";
+import EmptyDrawer from "../../components/EmptyDrawer/EmptyDrawer";
 import Search from "../../components/Search/Search";
 import Item from "../../components/Item/Item";
 
@@ -15,18 +16,19 @@ import Skeleton from "../../components/Item/Skeleton";
 
 const Main = () => {
   const dispatch = useDispatch();
-  const { items, status } = useSelector((state) => state.shoes);
+  const { itemsFetch, status } = useSelector((state) => state.shoes);
+  const { items } = useSelector((state) => state.cart);
   const { isOpen } = useSelector((state) => state.cart);
 
   React.useEffect(() => {
     dispatch(fetchShoes());
   }, [dispatch]);
-  const shoesList = items.map((obj) => <Item key={obj.id} {...obj} />);
+  const shoesList = itemsFetch.map((obj) => <Item key={obj.id} {...obj} />);
   const skeletonList = [...new Array(4)].map((_, i) => <Skeleton key={i} />);
   return (
     <div>
       <Header />
-      {isOpen && <Drawer />}
+      {isOpen && (items.length ? <Drawer /> : <EmptyDrawer />)}
       <Banner />
       <div className={styles.wrapper}>
         <div className={styles.top}>

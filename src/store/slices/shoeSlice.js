@@ -12,7 +12,7 @@ export const fetchShoes = createAsyncThunk("shoes/fetchShoes", async () => {
 const shoeSlice = createSlice({
   name: "shoe",
   initialState: {
-    items: [],
+    itemsFetch: [],
     status: "loading", // "loading", "complete", "error"
   },
   reducers: {},
@@ -22,7 +22,7 @@ const shoeSlice = createSlice({
     });
     builder.addCase(fetchShoes.fulfilled, (state, action) => {
       state.status = "complete";
-      state.items = action.payload;
+      state.itemsFetch = action.payload;
     });
     builder.addCase(fetchShoes.rejected, (state) => {
       state.status = "error";

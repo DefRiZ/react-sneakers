@@ -12,7 +12,7 @@ import { addItem } from "../../store/slices/cartSlice";
 const Item = ({ id, title, price, imageUrl }) => {
   const dispatch = useDispatch();
   // const { items } = useSelector((state) => state.cart);
-  const [isAdded, setIsAdded] = React.useState(false);
+  // const [isAdded, setIsAdded] = React.useState(false);
 
   const addButton = () => {
     const item = {
@@ -22,7 +22,7 @@ const Item = ({ id, title, price, imageUrl }) => {
       title,
     };
     dispatch(addItem(item));
-    setIsAdded(true);
+    // setIsAdded(true);
   };
 
   return (
@@ -40,7 +40,8 @@ const Item = ({ id, title, price, imageUrl }) => {
         <button className={styles.button}>
           <img
             onClick={() => addButton()}
-            src={isAdded === false ? add : added}
+            // src={isAdded === false ? add : added}
+            src={add}
           />
         </button>
       </div>
