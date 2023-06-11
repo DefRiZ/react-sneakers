@@ -28,7 +28,10 @@ const EmptyDrawer = () => {
             Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ.
           </p>
           <div className={styles.btnBlock}>
-            <button className={styles.btn}>
+            <button
+              className={styles.btn}
+              onClick={() => dispatch(changeDrawer())}
+            >
               <img className={styles.arrow} src={arrow} />
               Оформить заказ
             </button>

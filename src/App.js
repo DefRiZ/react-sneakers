@@ -1,3 +1,4 @@
+import React from "react";
 import "./App.css";
 
 import Main from "./pages/Main/Main";
@@ -8,10 +9,10 @@ import Header from "./components/Header/Header";
 import { useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import FavoritePage from "./pages/FavoritePage/FavoritePage";
-
 function App() {
   const { items } = useSelector((state) => state.cart);
   const { isOpen } = useSelector((state) => state.cart);
+
   return (
     <div className="App">
       <Header />

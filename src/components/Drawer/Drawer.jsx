@@ -16,7 +16,7 @@ const Drawer = () => {
     <div className={styles.overlay}>
       <div className={styles.drawer}>
         <h2 className={styles.title}>
-          Корзина{" "}
+          Корзина
           <img
             onClick={() => dispatch(changeDrawer())}
             src={remove}
