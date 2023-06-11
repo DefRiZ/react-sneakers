@@ -5,14 +5,21 @@ import styles from "./Item.module.scss";
 import add from "../../img/btn-plus.svg";
 import added from "../../img/btn-checked.svg";
 import disable from "../../img/heart-unliked.svg";
+import able from "../../img/heart-liked.svg";
 
 import { useDispatch, useSelector } from "react-redux";
-import { addItem } from "../../store/slices/cartSlice";
+import {
+  addItem,
+  addToFavorite,
+  removeFromFavorite,
+} from "../../store/slices/cartSlice";
 
-const Item = ({ id, title, price, imageUrl }) => {
+const Item = ({ id, title, price, imageUrl, favorited = false }) => {
   const dispatch = useDispatch();
-  // const { items } = useSelector((state) => state.cart);
+  const { favoriteItems } = useSelector((state) => state.cart);
   // const [isAdded, setIsAdded] = React.useState(false);
+  const [isFavorite, setIsFavorite] = React.useState(favorited);
+  console.log(favoriteItems);
 
   const addButton = () => {
     const item = {
@@ -25,10 +32,35 @@ const Item = ({ id, title, price, imageUrl }) => {
     // setIsAdded(true);
   };
 
+  const addToFavoriteButton = () => {
+    const item = {
+      id,
+      imageUrl,
+      price,
+      title,
+    };
+    if (favoriteItems.find((obj) => obj.id === item.id)) {
+      dispatch(removeFromFavorite(item));
+      setIsFavorite(false);
+      // setIsFavorite(false);
+    } else {
+      dispatch(addToFavorite(item));
+      setIsFavorite(true);
+      // setIsFavorite(true);
+    }
+  };
+  // const deleteFavorite = ({ id }) => {
+  //   dispatch(removeFromFavorite({ id }));
+  //   setIsFavorite(false);
+  // };
+
   return (
     <div className={styles.item}>
       <div className={styles.favorite}>
-        <img src={disable} />
+        <img
+          src={isFavorite ? able : disable}
+          onClick={() => addToFavoriteButton()}
+        />
       </div>
       <img className={styles.shoes} src={imageUrl} />
       <h3 className={styles.title}>{title}</h3>
