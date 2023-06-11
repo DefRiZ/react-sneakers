@@ -29,7 +29,8 @@ const EmptyDrawer = () => {
           </p>
           <div className={styles.btnBlock}>
             <button className={styles.btn}>
-              Оформить заказ <img className={styles.arrow} src={arrow} />
+              <img className={styles.arrow} src={arrow} />
+              Оформить заказ
             </button>
           </div>
         </div>

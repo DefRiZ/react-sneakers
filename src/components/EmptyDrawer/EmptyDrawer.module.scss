@@ -63,7 +63,6 @@
         max-width: 255px;
         background: #9dd558;
         border-radius: 18px;
-        text-align: center;
         width: 100%;
 
         padding: 18px 0;
@@ -73,8 +72,8 @@
 
         .arrow {
           position: relative;
-          top: 6px;
-          right: 156px;
+          top: 5px;
+          right: 10px;
           transition: transform 0.2s ease-in-out;
           transform: rotate(180deg);
         }

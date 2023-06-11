@@ -1,9 +1,7 @@
 import React from "react";
 
-import Header from "../../components/Header/Header";
 import Banner from "../../components/Banner/Banner";
-import Drawer from "../../components/Drawer/Drawer";
-import EmptyDrawer from "../../components/EmptyDrawer/EmptyDrawer";
+
 import Search from "../../components/Search/Search";
 import Item from "../../components/Item/Item";
 
@@ -17,8 +15,6 @@ import Skeleton from "../../components/Item/Skeleton";
 const Main = () => {
   const dispatch = useDispatch();
   const { itemsFetch, status } = useSelector((state) => state.shoes);
-  const { items } = useSelector((state) => state.cart);
-  const { isOpen } = useSelector((state) => state.cart);
 
   React.useEffect(() => {
     dispatch(fetchShoes());
@@ -27,8 +23,6 @@ const Main = () => {
   const skeletonList = [...new Array(4)].map((_, i) => <Skeleton key={i} />);
   return (
     <div>
-      <Header />
-      {isOpen && (items.length ? <Drawer /> : <EmptyDrawer />)}
       <Banner />
       <div className={styles.wrapper}>
         <div className={styles.top}>

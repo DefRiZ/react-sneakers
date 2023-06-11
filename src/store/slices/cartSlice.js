@@ -7,6 +7,7 @@ const cartSlice = createSlice({
     items: [],
     totalPrice: 0,
     tax: 0,
+    favoriteItems: [],
   },
   reducers: {
     changeDrawer(state) {
@@ -24,7 +25,6 @@ const cartSlice = createSlice({
       state.totalPrice = state.items.reduce((sum, obj) => {
         return sum + obj.price;
       }, 0);
-      console.log(state.totalPrice);
       state.tax = Math.floor((state.totalPrice / 100) * 5);
     },
     removeItem(state, action) {
@@ -34,9 +34,23 @@ const cartSlice = createSlice({
       }, 0);
       state.tax = Math.floor((state.totalPrice / 100) * 5);
     },
+    addToFavorite(state, action) {
+      state.favoriteItems.push(action.payload);
+    },
+    removeFromFavorite(state, action) {
+      state.favoriteItems = state.favoriteItems.filter(
+        (obj) => obj.id !== action.payload.id
+      );
+    },
   },
 });
 
-export const { changeDrawer, addItem, removeItem } = cartSlice.actions;
+export const {
+  changeDrawer,
+  addItem,
+  addToFavorite,
+  removeItem,
+  removeFromFavorite,
+} = cartSlice.actions;
 
 export default cartSlice.reducer;
