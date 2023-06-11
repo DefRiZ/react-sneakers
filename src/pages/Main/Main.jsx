@@ -15,10 +15,12 @@ import Skeleton from "../../components/Item/Skeleton";
 const Main = () => {
   const dispatch = useDispatch();
   const { itemsFetch, status } = useSelector((state) => state.shoes);
+  const { search } = useSelector((state) => state.filter);
 
   React.useEffect(() => {
-    dispatch(fetchShoes());
-  }, [dispatch]);
+    const searchValue = search ? `&search=${search}` : "";
+    dispatch(fetchShoes({ searchValue }));
+  }, [dispatch, search]);
   const shoesList = itemsFetch.map((obj) => <Item key={obj.id} {...obj} />);
   const skeletonList = [...new Array(4)].map((_, i) => <Skeleton key={i} />);
   return (

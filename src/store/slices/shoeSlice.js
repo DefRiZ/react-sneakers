@@ -2,12 +2,15 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 import axios from "axios";
 
-export const fetchShoes = createAsyncThunk("shoes/fetchShoes", async () => {
-  const { data } = await axios.get(
-    "https://647735539233e82dd53b26d5.mockapi.io/items"
-  );
-  return data;
-});
+export const fetchShoes = createAsyncThunk(
+  "shoes/fetchShoes",
+  async ({ searchValue }) => {
+    const { data } = await axios.get(
+      `https://647735539233e82dd53b26d5.mockapi.io/items?${searchValue}`
+    );
+    return data;
+  }
+);
 
 const shoeSlice = createSlice({
   name: "shoe",

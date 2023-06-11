@@ -16,10 +16,9 @@ import {
 
 const Item = ({ id, title, price, imageUrl, favorited = false }) => {
   const dispatch = useDispatch();
-  const { favoriteItems } = useSelector((state) => state.cart);
-  // const [isAdded, setIsAdded] = React.useState(false);
+  const { favoriteItems, items } = useSelector((state) => state.cart);
+  const [isAdded, setIsAdded] = React.useState(false);
   const [isFavorite, setIsFavorite] = React.useState(favorited);
-  console.log(favoriteItems);
 
   const addButton = () => {
     const item = {
@@ -42,17 +41,11 @@ const Item = ({ id, title, price, imageUrl, favorited = false }) => {
     if (favoriteItems.find((obj) => obj.id === item.id)) {
       dispatch(removeFromFavorite(item));
       setIsFavorite(false);
-      // setIsFavorite(false);
     } else {
       dispatch(addToFavorite(item));
       setIsFavorite(true);
-      // setIsFavorite(true);
     }
   };
-  // const deleteFavorite = ({ id }) => {
-  //   dispatch(removeFromFavorite({ id }));
-  //   setIsFavorite(false);
-  // };
 
   return (
     <div className={styles.item}>

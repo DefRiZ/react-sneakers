@@ -1,8 +1,34 @@
 import React from "react";
 
+import debounce from "lodash.debounce";
+
 import styles from "./Search.module.scss";
 
+import { useSelector, useDispatch } from "react-redux";
+import { setSearch } from "../../store/slices/filterSlice";
+
 const Search = () => {
+  const [text, setText] = React.useState("");
+  const dispatch = useDispatch();
+  const { search } = useSelector((state) => state.filter);
+
+  const debounceInput = React.useCallback(
+    debounce((str) => dispatch(setSearch(str)), 350),
+    []
+  );
+
+  const onChangeInput = (event) => {
+    setText(event.target.value);
+    debounceInput(event.target.value);
+  };
+
+  const inputRef = React.useRef();
+  const onClickCLear = () => {
+    setText("");
+    dispatch(setSearch(""));
+    inputRef.current.focus();
+  };
+
   return (
     <div className={styles.root}>
       <svg
@@ -21,7 +47,26 @@ const Search = () => {
         />
       </svg>
 
-      <input className={styles.input} placeholder="Поиск..." />
+      <input
+        ref={inputRef}
+        value={text}
+        onChange={(event) => onChangeInput(event)}
+        className={styles.input}
+        placeholder="Поиск..."
+      />
+      {text && (
+        <svg
+          className={styles.close}
+          onClick={() => onClickCLear()}
+          height="25"
+          viewBox="0 0 48 48"
+          width="25"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M38 12.83L35.17 10 24 21.17 12.83 10 10 12.83 21.17 24 10 35.17 12.83 38 24 26.83 35.17 38 38 35.17 26.83 24z" />
+          <path d="M0 0h48v48H0z" fill="none" />
+        </svg>
+      )}
     </div>
   );
 };
