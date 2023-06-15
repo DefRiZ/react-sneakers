@@ -8,6 +8,8 @@ const cartSlice = createSlice({
     totalPrice: 0,
     tax: 0,
     favoriteItems: [],
+    orderedItem: [],
+    countOfOrder: 0,
   },
   reducers: {
     changeDrawer(state) {
@@ -34,6 +36,11 @@ const cartSlice = createSlice({
       }, 0);
       state.tax = Math.floor((state.totalPrice / 100) * 5);
     },
+    removeAll(state, action) {
+      state.items = [];
+      state.totalPrice = 0;
+      state.tax = 0;
+    },
     addToFavorite(state, action) {
       state.favoriteItems.push(action.payload);
     },
@@ -41,6 +48,10 @@ const cartSlice = createSlice({
       state.favoriteItems = state.favoriteItems.filter(
         (obj) => obj.id !== action.payload.id
       );
+    },
+    addToOrdered(state, action) {
+      state.orderedItem = state.items;
+      state.countOfOrder += 1;
     },
   },
 });
@@ -50,7 +61,9 @@ export const {
   addItem,
   addToFavorite,
   removeItem,
+  removeAll,
   removeFromFavorite,
+  addToOrdered,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;

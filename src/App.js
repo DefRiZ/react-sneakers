@@ -9,6 +9,7 @@ import Header from "./components/Header/Header";
 import { useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import FavoritePage from "./pages/FavoritePage/FavoritePage";
+import OrderedPage from "./pages/OrderedPage/OrderedPage";
 function App() {
   const { items } = useSelector((state) => state.cart);
   const { isOpen } = useSelector((state) => state.cart);
@@ -20,6 +21,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/favorite" element={<FavoritePage />} />
+        <Route path="/orders" element={<OrderedPage />} />
       </Routes>
     </div>
   );
