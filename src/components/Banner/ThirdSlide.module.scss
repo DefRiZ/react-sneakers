@@ -1,0 +1,40 @@
+.banner {
+  display: flex;
+  justify-content: space-between;
+  max-height: 300px;
+  background-color: #f4efe9;
+  border-radius: 20px;
+  .info {
+    .logo {
+      position: absolute;
+      top: 16px;
+      left: 20px;
+    }
+    .title {
+      margin-top: 80px;
+      margin-bottom: 20px;
+      margin-left: 61px;
+      font-weight: 700;
+      font-size: 38px;
+      line-height: 46px;
+      text-align: left;
+      span {
+        color: #8bb43c;
+      }
+    }
+
+    .button {
+      margin-left: 61px;
+      display: block;
+      background-color: #a5d364;
+      color: #ffffff;
+      padding: 14px 47px;
+      border-radius: 110px;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      line-height: 19px;
+      text-transform: uppercase;
+    }
+  }
+}

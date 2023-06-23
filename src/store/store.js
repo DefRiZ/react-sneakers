@@ -13,17 +13,19 @@ import {
   REGISTER,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+import bannerSlice from "./slices/bannerSlice";
 
 const rootReducer = combineReducers({
   shoes: shoeSlice,
   cart: cartSlice,
   filter: filterSlice,
+  banner: bannerSlice,
 });
 
 const persistConfig = {
   key: "root",
   storage,
-  blacklist: ["filter"],
+  blacklist: ["filter", "banner"],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
