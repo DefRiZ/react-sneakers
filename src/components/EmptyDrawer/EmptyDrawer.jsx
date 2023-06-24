@@ -23,9 +23,9 @@ const EmptyDrawer = () => {
         </h2>
         <div className={styles.root}>
           <img src={empty} />
-          <h3 className={styles.subtitle}>Корзина пустая</h3>
+          <h3 className={styles.subtitle}>Корзина пуста</h3>
           <p className={styles.text}>
-            Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ.
+            Додайте хоча б одну пару взуття, щоб зробити замовлення!
           </p>
           <div className={styles.btnBlock}>
             <button
@@ -33,7 +33,7 @@ const EmptyDrawer = () => {
               onClick={() => dispatch(changeDrawer())}
             >
               <img className={styles.arrow} src={arrow} />
-              Оформить заказ
+              Оформити замовлення
             </button>
           </div>
         </div>

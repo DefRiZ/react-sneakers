@@ -1,5 +1,5 @@
 .overlay {
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   width: 100%;
@@ -9,7 +9,7 @@
 }
 
 .drawer {
-  position: absolute;
+  position: fixed;
   padding: 30px;
   width: 420px;
   right: 0;

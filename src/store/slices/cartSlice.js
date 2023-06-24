@@ -4,6 +4,7 @@ const cartSlice = createSlice({
   name: "cart",
   initialState: {
     isOpen: false,
+    isOpenBurger: false,
     items: [],
     totalPrice: 0,
     tax: 0,
@@ -14,6 +15,9 @@ const cartSlice = createSlice({
   reducers: {
     changeDrawer(state) {
       state.isOpen = !state.isOpen;
+    },
+    changeBurgerDrawer(state) {
+      state.isOpenBurger = !state.isOpenBurger;
     },
     addItem(state, action) {
       const findObj = state.items.find((obj) => obj.id === action.payload.id);
@@ -58,6 +62,7 @@ const cartSlice = createSlice({
 
 export const {
   changeDrawer,
+  changeBurgerDrawer,
   addItem,
   addToFavorite,
   removeItem,

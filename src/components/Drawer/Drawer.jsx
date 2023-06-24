@@ -49,18 +49,18 @@ const Drawer = () => {
           <div className={styles.order}>
             <ul>
               <li className={styles.price}>
-                <span>Итого: </span>
+                <span>Всього: </span>
                 <div className={styles.dashed}></div>
-                <span>{totalPrice + tax} руб. </span>
+                <span>{totalPrice + tax} грн. </span>
               </li>
               <li className={styles.price}>
                 <span>Налог 5%: </span>
                 <div className={styles.dashed}></div>
-                <span>{tax} руб. </span>
+                <span>{tax} грн. </span>
               </li>
             </ul>
             <button onClick={() => onClickOrder()} className={styles.btn}>
-              Оформить заказ <img className={styles.arrow} src={arrow} />
+              Оформити замовлення <img className={styles.arrow} src={arrow} />
             </button>
           </div>
         </div>
@@ -81,14 +81,14 @@ const Drawer = () => {
           </h2>
           <div className={styles.root}>
             <img src={apply} />
-            <h3 className={styles.subtitle}>Заказ оформлен!</h3>
+            <h3 className={styles.subtitle}>Замовлення оформлене!</h3>
             <p className={styles.text}>
-              Ваш заказ #{countOfOrder} скоро будет передан курьерской доставке
+              Ваш заказ #{countOfOrder} скоро буде переданий доставці
             </p>
             <div className={styles.btnBlock}>
               <button className={styles.btn} onClick={() => GoBackToMain()}>
                 <img className={styles.arrow} src={arrow} />
-                Вернуться назад
+                Повернутися назад
               </button>
             </div>
           </div>

@@ -16,5 +16,8 @@
     position: absolute;
     top: 132px;
     left: 941px;
+    @media (max-width: 965px) {
+      display: none;
+    }
   }
 }

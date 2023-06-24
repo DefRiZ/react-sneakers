@@ -15,14 +15,14 @@ const OrderedPage = () => {
   if (!orderedItem) {
     return (
       <div className={styles.rootEmpty}>
-        <img className={styles.image} src={sad} />
-        <h2 className={styles.titleEmpty}>У вас нет заказов</h2>
-        <p className={styles.text}>Вы нищеброд? Оформите хотя бы один заказ.</p>
+        <img className={styles.image} src={sad} alt="smile" />
+        <h2 className={styles.titleEmpty}>У вас немає замовлень</h2>
+        <p className={styles.text}>Спочатку оформіть хоча б одне замовлення</p>
         <div className={styles.btnBlock}>
           <Link className={styles.btn} to="/">
             <button>
-              <img className={styles.arrow} src={arrow} />
-              Вернуться назад
+              <img className={styles.arrow} src={arrow} alt="back" />
+              Повернутися назад
             </button>
           </Link>
         </div>
@@ -33,9 +33,9 @@ const OrderedPage = () => {
     <div className={styles.root}>
       <div className={styles.flexWrap}>
         <Link className={styles.button} to="/">
-          <img src={back} />
+          <img src={back} alt="back" />
         </Link>
-        <h1 className={styles.title}>Мои покупки</h1>
+        <h1 className={styles.title}>Мої покупки</h1>
       </div>
       <div className={styles.items}>
         {orderedItem.map((obj) => (

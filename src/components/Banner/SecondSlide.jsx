@@ -13,7 +13,7 @@ const SecondSlide = () => {
         <h2 className={styles.title}>
           <span>Тестовий слайд</span> номер 2!
         </h2>
-        <button className={styles.button}>Купить</button>
+        <button className={styles.button}>Купити</button>
       </div>
       <div className={styles.image}>
         <img src={banner} />
