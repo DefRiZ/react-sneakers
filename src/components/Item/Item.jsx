@@ -16,8 +16,7 @@ import {
 
 const Item = ({ id, title, price, imageUrl, favorited = false }) => {
   const dispatch = useDispatch();
-  const { favoriteItems, items } = useSelector((state) => state.cart);
-  const [isAdded, setIsAdded] = React.useState(false);
+  const { favoriteItems } = useSelector((state) => state.cart);
   const [isFavorite, setIsFavorite] = React.useState(favorited);
 
   const addButton = () => {
@@ -28,7 +27,6 @@ const Item = ({ id, title, price, imageUrl, favorited = false }) => {
       title,
     };
     dispatch(addItem(item));
-    // setIsAdded(true);
   };
 
   const addToFavoriteButton = () => {
@@ -59,15 +57,11 @@ const Item = ({ id, title, price, imageUrl, favorited = false }) => {
       <h3 className={styles.title}>{title}</h3>
       <div className={styles.purchase}>
         <div className={styles.info}>
-          <span>Цена:</span>
-          <span>{price} руб.</span>
+          <span>Ціна:</span>
+          <span>{price} грн.</span>
         </div>
         <button className={styles.button}>
-          <img
-            onClick={() => addButton()}
-            // src={isAdded === false ? add : added}
-            src={add}
-          />
+          <img onClick={() => addButton()} src={add} />
         </button>
       </div>
     </div>

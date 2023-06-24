@@ -28,11 +28,11 @@ const Main = () => {
       <Banner />
       <div className={styles.wrapper}>
         <div className={styles.top}>
-          <h2>Все кроссовки</h2>
+          <h2>Усі кросівки</h2>
           <Search />
         </div>
         <div className={styles.items}>
-          {status === "error" && <p>Попробуйте обновить страницу!</p>}
+          {status === "error" && <p>Спробуйте оновити сторінку!</p>}
           {status === "loading" ? skeletonList : shoesList}
         </div>
       </div>

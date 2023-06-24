@@ -15,14 +15,14 @@ const FavoritePage = () => {
   if (!favoriteItems.length) {
     return (
       <div className={styles.rootEmpty}>
-        <img className={styles.image} src={sad} />
-        <h2 className={styles.titleEmpty}>Закладок нет :(</h2>
-        <p className={styles.text}>Вы ничего не добавляли в закладки</p>
+        <img className={styles.image} src={sad} alt="smile" />
+        <h2 className={styles.titleEmpty}>Закладок немає :(</h2>
+        <p className={styles.text}>Ви нічого не додали в улюблене</p>
         <div className={styles.btnBlock}>
           <Link className={styles.btn} to="/">
             <button>
-              <img className={styles.arrow} src={arrow} />
-              Оформить заказ
+              <img className={styles.arrow} src={arrow} alt="back" />
+              Оформити замовлення
             </button>
           </Link>
         </div>
@@ -33,9 +33,9 @@ const FavoritePage = () => {
     <div className={styles.root}>
       <div className={styles.flexWrap}>
         <Link className={styles.button} to="/">
-          <img src={back} />
+          <img src={back} alt="back" />
         </Link>
-        <h1 className={styles.title}>Мои закладки</h1>
+        <h1 className={styles.title}>Мої закладки</h1>
       </div>
       <div className={styles.items}>
         {favoriteItems.map((obj) => (

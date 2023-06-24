@@ -13,7 +13,7 @@ const FirstSlide = () => {
         <h2 className={styles.title}>
           <span>Stan Smith</span>, Forever!
         </h2>
-        <button className={styles.button}>Купить</button>
+        <button className={styles.button}>Купити</button>
       </div>
       <div className={styles.image}>
         <img src={banner} />
