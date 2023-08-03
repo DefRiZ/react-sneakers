@@ -1,17 +1,38 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+export type CartItem = {
+  id: string;
+  title: string;
+  price: number;
+  imageUrl: string;
+  favorited: boolean;
+};
+
+interface CartSliceState {
+  isOpen: boolean;
+  isOpenBurger: boolean;
+  items: CartItem[];
+  totalPrice: number;
+  tax: number;
+  favoriteItems: CartItem[];
+  orderedItem: CartItem[];
+  countOfOrder: number;
+}
+
+const initialState: CartSliceState = {
+  isOpen: false,
+  isOpenBurger: false,
+  items: [],
+  totalPrice: 0,
+  tax: 0,
+  favoriteItems: [],
+  orderedItem: [],
+  countOfOrder: 0,
+};
+
 const cartSlice = createSlice({
   name: "cart",
-  initialState: {
-    isOpen: false,
-    isOpenBurger: false,
-    items: [],
-    totalPrice: 0,
-    tax: 0,
-    favoriteItems: [],
-    orderedItem: [],
-    countOfOrder: 0,
-  },
+  initialState,
   reducers: {
     changeDrawer(state) {
       state.isOpen = !state.isOpen;
@@ -40,7 +61,7 @@ const cartSlice = createSlice({
       }, 0);
       state.tax = Math.floor((state.totalPrice / 100) * 5);
     },
-    removeAll(state, action) {
+    removeAll(state) {
       state.items = [];
       state.totalPrice = 0;
       state.tax = 0;
@@ -53,7 +74,7 @@ const cartSlice = createSlice({
         (obj) => obj.id !== action.payload.id
       );
     },
-    addToOrdered(state, action) {
+    addToOrdered(state) {
       state.orderedItem = state.items;
       state.countOfOrder += 1;
     },

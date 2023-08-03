@@ -5,11 +5,12 @@ import styles from "./EmptyDrawer.module.scss";
 import remove from "../../img/btn-remove.svg";
 import arrow from "../../img/btn-arrow.svg";
 import empty from "../../img/empty.jpg";
-import { useDispatch } from "react-redux";
-import { changeDrawer } from "../../store/slices/cartSlice";
 
-const EmptyDrawer = () => {
-  const dispatch = useDispatch();
+import { changeDrawer } from "../../store/slices/cartSlice";
+import { useAppDispatch } from "../../store/store";
+
+const EmptyDrawer: React.FC = () => {
+  const dispatch = useAppDispatch();
   return (
     <div className={styles.overlay}>
       <div className={styles.drawer}>

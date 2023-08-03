@@ -1,23 +1,36 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 import axios from "axios";
+import { CartItem } from "./cartSlice";
+
+interface FetchArgs {
+  searchValue: string;
+}
 
 export const fetchShoes = createAsyncThunk(
   "shoes/fetchShoes",
-  async ({ searchValue }) => {
-    const { data } = await axios.get(
+  async (params: FetchArgs) => {
+    const { searchValue } = params;
+    const { data } = await axios.get<CartItem[]>(
       `https://647735539233e82dd53b26d5.mockapi.io/items?${searchValue}`
     );
-    return data;
+    return data as CartItem[];
   }
 );
 
+interface initialStateArgs {
+  itemsFetch: CartItem[];
+  status: "loading" | "complete" | "error";
+}
+
+const initialState: initialStateArgs = {
+  itemsFetch: [],
+  status: "loading",
+};
+
 const shoeSlice = createSlice({
   name: "shoe",
-  initialState: {
-    itemsFetch: [],
-    status: "loading", // "loading", "complete", "error"
-  },
+  initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchShoes.pending, (state) => {
@@ -33,5 +46,4 @@ const shoeSlice = createSlice({
   },
 });
 
-export const { status } = shoeSlice.actions;
 export default shoeSlice.reducer;

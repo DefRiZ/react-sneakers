@@ -7,22 +7,23 @@ import arrow from "../../img/btn-arrow.svg";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-import styles from "./OrderedPage.module.scss";
+import styles from "./FavoritePage.module.scss";
 import Item from "../../components/Item/Item";
+import { RootState } from "../../store/store";
 
-const OrderedPage = () => {
-  const { orderedItem } = useSelector((state) => state.cart);
-  if (!orderedItem) {
+const FavoritePage: React.FC = () => {
+  const { favoriteItems } = useSelector((state: RootState) => state.cart);
+  if (!favoriteItems.length) {
     return (
       <div className={styles.rootEmpty}>
         <img className={styles.image} src={sad} alt="smile" />
-        <h2 className={styles.titleEmpty}>У вас немає замовлень</h2>
-        <p className={styles.text}>Спочатку оформіть хоча б одне замовлення</p>
+        <h2 className={styles.titleEmpty}>Закладок немає :(</h2>
+        <p className={styles.text}>Ви нічого не додали в улюблене</p>
         <div className={styles.btnBlock}>
           <Link className={styles.btn} to="/">
             <button>
               <img className={styles.arrow} src={arrow} alt="back" />
-              Повернутися назад
+              Оформити замовлення
             </button>
           </Link>
         </div>
@@ -35,10 +36,10 @@ const OrderedPage = () => {
         <Link className={styles.button} to="/">
           <img src={back} alt="back" />
         </Link>
-        <h1 className={styles.title}>Мої покупки</h1>
+        <h1 className={styles.title}>Мої закладки</h1>
       </div>
       <div className={styles.items}>
-        {orderedItem.map((obj) => (
+        {favoriteItems.map((obj) => (
           <Item key={obj.id} {...obj} favorited={true} />
         ))}
       </div>
@@ -46,4 +47,4 @@ const OrderedPage = () => {
   );
 };
 
-export default OrderedPage;
+export default FavoritePage;

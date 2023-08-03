@@ -14,6 +14,7 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import bannerSlice from "./slices/bannerSlice";
+import { useDispatch } from "react-redux";
 
 const rootReducer = combineReducers({
   shoes: shoeSlice,
@@ -21,6 +22,11 @@ const rootReducer = combineReducers({
   filter: filterSlice,
   banner: bannerSlice,
 });
+
+export type RootState = ReturnType<typeof store.getState>;
+
+export type AppDispatch = typeof store.dispatch;
+export const useAppDispatch = () => useDispatch<AppDispatch>();
 
 const persistConfig = {
   key: "root",

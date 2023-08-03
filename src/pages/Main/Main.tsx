@@ -7,21 +7,26 @@ import Item from "../../components/Item/Item";
 
 import styles from "./Main.module.scss";
 
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { fetchShoes } from "../../store/slices/shoeSlice";
 
 import Skeleton from "../../components/Item/Skeleton";
+import { RootState, useAppDispatch } from "../../store/store";
+import { CartItem } from "../../store/slices/cartSlice";
 
-const Main = () => {
-  const dispatch = useDispatch();
-  const { itemsFetch, status } = useSelector((state) => state.shoes);
-  const { search } = useSelector((state) => state.filter);
+const Main: React.FC = () => {
+  const dispatch = useAppDispatch();
+  const { itemsFetch, status } = useSelector((state: RootState) => state.shoes);
+  const { search } = useSelector((state: RootState) => state.filter);
 
   React.useEffect(() => {
     const searchValue = search ? `&search=${search}` : "";
     dispatch(fetchShoes({ searchValue }));
   }, [dispatch, search]);
-  const shoesList = itemsFetch.map((obj) => <Item key={obj.id} {...obj} />);
+
+  const shoesList = itemsFetch.map((obj: CartItem) => (
+    <Item key={obj.id} {...obj} />
+  ));
   const skeletonList = [...new Array(4)].map((_, i) => <Skeleton key={i} />);
   return (
     <div>

@@ -5,13 +5,13 @@ import styles from "./FirstSlide.module.scss";
 import adidas from "../../img/abibas.png";
 import banner from "../../img/banner.png";
 
-const ThirdSlide = () => {
+const SecondSlide: React.FC = () => {
   return (
     <div className={styles.banner}>
       <div className={styles.info}>
         <img className={styles.logo} src={adidas} />
         <h2 className={styles.title}>
-          <span>Тестовий слайд</span> номер 3!
+          <span>Тестовий слайд</span> номер 2!
         </h2>
         <button className={styles.button}>Купити</button>
       </div>
@@ -22,4 +22,4 @@ const ThirdSlide = () => {
   );
 };
 
-export default ThirdSlide;
+export default SecondSlide;

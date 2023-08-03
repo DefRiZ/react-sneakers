@@ -2,19 +2,20 @@ import React from "react";
 
 import cursor from "../../img/cursor.svg";
 
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { setCurrentSlide } from "../../store/slices/bannerSlice";
 
 import styles from "./Banner.module.scss";
 import FirstSlide from "./FirstSlide";
 import SecondSlide from "./SecondSlide";
 import ThirdSlide from "./ThirdSlide";
+import { RootState, useAppDispatch } from "../../store/store";
 
 const slides = [FirstSlide, SecondSlide, ThirdSlide];
 
-const Banner = () => {
-  const dispatch = useDispatch();
-  const { currentSlide } = useSelector((state) => state.banner);
+const Banner: React.FC = () => {
+  const dispatch = useAppDispatch();
+  const { currentSlide } = useSelector((state: RootState) => state.banner);
   const changeSlide = () => {
     const isLastSlide = currentSlide === slides.length - 1;
     const newIndex = isLastSlide ? 0 : currentSlide + 1;

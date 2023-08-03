@@ -3,7 +3,7 @@ import React from "react";
 import styles from "./Item.module.scss";
 
 import add from "../../img/btn-plus.svg";
-import added from "../../img/btn-checked.svg";
+// import added from "../../img/btn-checked.svg";
 import disable from "../../img/heart-unliked.svg";
 import able from "../../img/heart-liked.svg";
 
@@ -13,10 +13,25 @@ import {
   addToFavorite,
   removeFromFavorite,
 } from "../../store/slices/cartSlice";
+import { RootState } from "../../store/store";
 
-const Item = ({ id, title, price, imageUrl, favorited = false }) => {
+type ItemProps = {
+  id: string;
+  title: string;
+  price: number;
+  imageUrl: string;
+  favorited: boolean;
+};
+
+const Item: React.FC<ItemProps> = ({
+  id,
+  title,
+  price,
+  imageUrl,
+  favorited = false,
+}) => {
   const dispatch = useDispatch();
-  const { favoriteItems } = useSelector((state) => state.cart);
+  const { favoriteItems } = useSelector((state: RootState) => state.cart);
   const [isFavorite, setIsFavorite] = React.useState(favorited);
 
   const addButton = () => {
