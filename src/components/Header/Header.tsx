@@ -3,16 +3,19 @@ import React from "react";
 import logo from "../../img/logo.png";
 
 import styles from "./Header.module.scss";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { changeDrawer, changeBurgerDrawer } from "../../store/slices/cartSlice";
 import BurgerDrawer from "./BurgerDrawer";
 
 import { Link } from "react-router-dom";
+import { RootState, useAppDispatch } from "../../store/store";
 
-const Header = () => {
-  const dispatch = useDispatch();
+const Header: React.FC = () => {
+  const dispatch = useAppDispatch();
 
-  const { totalPrice, tax, isOpenBurger } = useSelector((state) => state.cart);
+  const { totalPrice, tax, isOpenBurger } = useSelector(
+    (state: RootState) => state.cart
+  );
 
   return (
     <div className={styles.border}>

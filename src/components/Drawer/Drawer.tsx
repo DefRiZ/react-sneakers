@@ -7,17 +7,18 @@ import arrow from "../../img/btn-arrow.svg";
 import remove from "../../img/remove-item.svg";
 import apply from "../../img/apply.jpg";
 
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import {
   changeDrawer,
   addToOrdered,
   removeAll,
 } from "../../store/slices/cartSlice";
+import { RootState, useAppDispatch } from "../../store/store";
 
-const Drawer = () => {
-  const dispatch = useDispatch();
+const Drawer: React.FC = () => {
+  const dispatch = useAppDispatch();
   const { items, totalPrice, tax, countOfOrder } = useSelector(
-    (state) => state.cart
+    (state: RootState) => state.cart
   );
   const [isOrdered, setIsOrdered] = React.useState(false);
   const onClickOrder = () => {

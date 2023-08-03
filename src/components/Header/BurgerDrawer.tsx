@@ -1,13 +1,11 @@
-import React from "react";
-
-import { useSelector, useDispatch } from "react-redux";
 import { changeDrawer, changeBurgerDrawer } from "../../store/slices/cartSlice";
 
 import styles from "./BurgerDrawer.module.scss";
 
 import { Link } from "react-router-dom";
-const BurgerDrawer = () => {
-  const dispatch = useDispatch();
+import { useAppDispatch } from "../../store/store";
+const BurgerDrawer: React.FC = () => {
+  const dispatch = useAppDispatch();
 
   const onClickOrder = () => {
     dispatch(changeDrawer());

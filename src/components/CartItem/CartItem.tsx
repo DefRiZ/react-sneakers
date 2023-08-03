@@ -1,14 +1,19 @@
-import React from "react";
-
 import remove from "../../img/remove-item.svg";
 
 import styles from "./CartItem.module.scss";
 
-import { useDispatch } from "react-redux";
 import { removeItem } from "../../store/slices/cartSlice";
+import { useAppDispatch } from "../../store/store";
 
-const CartItem = ({ id, title, price, imageUrl }) => {
-  const dispatch = useDispatch();
+type CartItemProps = {
+  id: string;
+  title: string;
+  price: number;
+  imageUrl: string;
+};
+
+const CartItem: React.FC<CartItemProps> = ({ id, title, price, imageUrl }) => {
+  const dispatch = useAppDispatch();
   return (
     <div className={styles.root}>
       <img alt="shoes" className={styles.image} src={imageUrl} />
@@ -16,13 +21,13 @@ const CartItem = ({ id, title, price, imageUrl }) => {
         <h2 className={styles.title}>{title}</h2>
         <span className={styles.price}>{price} грн.</span>
       </div>
-      <btn className={styles.btn}>
+      <button className={styles.btn}>
         <img
           alt="delete"
           src={remove}
           onClick={() => dispatch(removeItem({ id }))}
         />
-      </btn>
+      </button>
     </div>
   );
 };
