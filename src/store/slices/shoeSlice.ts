@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 import axios from "axios";
-import { CartItem } from "./cartSlice";
+import { CartItemProps } from "./cartSlice";
 
 interface FetchArgs {
   searchValue: string;
@@ -11,15 +11,15 @@ export const fetchShoes = createAsyncThunk(
   "shoes/fetchShoes",
   async (params: FetchArgs) => {
     const { searchValue } = params;
-    const { data } = await axios.get<CartItem[]>(
+    const { data } = await axios.get<CartItemProps[]>(
       `https://647735539233e82dd53b26d5.mockapi.io/items?${searchValue}`
     );
-    return data as CartItem[];
+    return data as CartItemProps[];
   }
 );
 
 interface initialStateArgs {
-  itemsFetch: CartItem[];
+  itemsFetch: CartItemProps[];
   status: "loading" | "complete" | "error";
 }
 

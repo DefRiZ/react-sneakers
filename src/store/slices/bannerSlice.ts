@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 interface bannerSliceState {
   currentSlide: number;
@@ -12,7 +12,7 @@ const bannerSlice = createSlice({
   name: "banner",
   initialState,
   reducers: {
-    setCurrentSlide(state, action) {
+    setCurrentSlide(state, action: PayloadAction<number>) {
       state.currentSlide = action.payload;
     },
   },

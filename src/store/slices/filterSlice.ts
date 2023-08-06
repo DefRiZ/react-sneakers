@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 interface filterSliceState {
   search: string;
@@ -12,7 +12,7 @@ const filterSlice = createSlice({
   name: "filter",
   initialState,
   reducers: {
-    setSearch(state, action) {
+    setSearch(state, action: PayloadAction<string>) {
       state.search = action.payload;
     },
   },

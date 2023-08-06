@@ -2,17 +2,16 @@ import remove from "../../img/remove-item.svg";
 
 import styles from "./CartItem.module.scss";
 
-import { removeItem } from "../../store/slices/cartSlice";
+import { CartItemProps, removeItem } from "../../store/slices/cartSlice";
 import { useAppDispatch } from "../../store/store";
 
-type CartItemProps = {
-  id: string;
-  title: string;
-  price: number;
-  imageUrl: string;
-};
-
-const CartItem: React.FC<CartItemProps> = ({ id, title, price, imageUrl }) => {
+const CartItem: React.FC<CartItemProps> = ({
+  id,
+  title,
+  price,
+  imageUrl,
+  favorited,
+}) => {
   const dispatch = useAppDispatch();
   return (
     <div className={styles.root}>
@@ -25,7 +24,9 @@ const CartItem: React.FC<CartItemProps> = ({ id, title, price, imageUrl }) => {
         <img
           alt="delete"
           src={remove}
-          onClick={() => dispatch(removeItem({ id }))}
+          onClick={() =>
+            dispatch(removeItem({ id, title, price, imageUrl, favorited }))
+          }
         />
       </button>
     </div>

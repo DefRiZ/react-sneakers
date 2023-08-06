@@ -1,7 +1,7 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-export type CartItem = {
-  id: string;
+export type CartItemProps = {
+  id: number;
   title: string;
   price: number;
   imageUrl: string;
@@ -11,11 +11,11 @@ export type CartItem = {
 interface CartSliceState {
   isOpen: boolean;
   isOpenBurger: boolean;
-  items: CartItem[];
+  items: CartItemProps[];
   totalPrice: number;
   tax: number;
-  favoriteItems: CartItem[];
-  orderedItem: CartItem[];
+  favoriteItems: CartItemProps[];
+  orderedItem: CartItemProps[];
   countOfOrder: number;
 }
 
@@ -40,7 +40,7 @@ const cartSlice = createSlice({
     changeBurgerDrawer(state) {
       state.isOpenBurger = !state.isOpenBurger;
     },
-    addItem(state, action) {
+    addItem(state, action: PayloadAction<CartItemProps>) {
       const findObj = state.items.find((obj) => obj.id === action.payload.id);
 
       if (findObj) {
@@ -54,7 +54,7 @@ const cartSlice = createSlice({
       }, 0);
       state.tax = Math.floor((state.totalPrice / 100) * 5);
     },
-    removeItem(state, action) {
+    removeItem(state, action: PayloadAction<CartItemProps>) {
       state.items = state.items.filter((obj) => obj.id !== action.payload.id);
       state.totalPrice = state.items.reduce((sum, obj) => {
         return sum + obj.price;
@@ -66,10 +66,10 @@ const cartSlice = createSlice({
       state.totalPrice = 0;
       state.tax = 0;
     },
-    addToFavorite(state, action) {
+    addToFavorite(state, action: PayloadAction<CartItemProps>) {
       state.favoriteItems.push(action.payload);
     },
-    removeFromFavorite(state, action) {
+    removeFromFavorite(state, action: PayloadAction<CartItemProps>) {
       state.favoriteItems = state.favoriteItems.filter(
         (obj) => obj.id !== action.payload.id
       );

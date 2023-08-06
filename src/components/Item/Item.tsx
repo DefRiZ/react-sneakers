@@ -9,21 +9,14 @@ import able from "../../img/heart-liked.svg";
 
 import { useDispatch, useSelector } from "react-redux";
 import {
+  CartItemProps,
   addItem,
   addToFavorite,
   removeFromFavorite,
 } from "../../store/slices/cartSlice";
 import { RootState } from "../../store/store";
 
-type ItemProps = {
-  id: string;
-  title: string;
-  price: number;
-  imageUrl: string;
-  favorited: boolean;
-};
-
-const Item: React.FC<ItemProps> = ({
+const Item: React.FC<CartItemProps> = ({
   id,
   title,
   price,
@@ -40,6 +33,7 @@ const Item: React.FC<ItemProps> = ({
       imageUrl,
       price,
       title,
+      favorited,
     };
     dispatch(addItem(item));
   };
@@ -50,6 +44,7 @@ const Item: React.FC<ItemProps> = ({
       imageUrl,
       price,
       title,
+      favorited,
     };
     if (favoriteItems.find((obj) => obj.id === item.id)) {
       dispatch(removeFromFavorite(item));

@@ -12,7 +12,7 @@ import { fetchShoes } from "../../store/slices/shoeSlice";
 
 import Skeleton from "../../components/Item/Skeleton";
 import { RootState, useAppDispatch } from "../../store/store";
-import { CartItem } from "../../store/slices/cartSlice";
+import { CartItemProps } from "../../store/slices/cartSlice";
 
 const Main: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -24,7 +24,7 @@ const Main: React.FC = () => {
     dispatch(fetchShoes({ searchValue }));
   }, [dispatch, search]);
 
-  const shoesList = itemsFetch.map((obj: CartItem) => (
+  const shoesList = itemsFetch.map((obj: CartItemProps) => (
     <Item key={obj.id} {...obj} />
   ));
   const skeletonList = [...new Array(4)].map((_, i) => <Skeleton key={i} />);
