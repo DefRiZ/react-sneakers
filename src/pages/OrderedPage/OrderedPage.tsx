@@ -1,14 +1,15 @@
 import React from "react";
 
+import styles from "./OrderedPage.module.scss";
+
 import back from "../../img/btn-back.png";
 import sad from "../../img/smile-1.jpg";
 import arrow from "../../img/btn-arrow.svg";
 
+import Item from "../../components/Item/Item";
+
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-
-import styles from "./OrderedPage.module.scss";
-import Item from "../../components/Item/Item";
 import { RootState } from "../../store/store";
 
 const OrderedPage: React.FC = () => {

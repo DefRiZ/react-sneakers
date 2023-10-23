@@ -4,7 +4,6 @@ import debounce from "lodash.debounce";
 
 import styles from "./Search.module.scss";
 
-import {} from "react-redux";
 import { setSearch } from "../../store/slices/filterSlice";
 import { useAppDispatch } from "../../store/store";
 

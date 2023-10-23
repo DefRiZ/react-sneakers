@@ -24,7 +24,6 @@ const Drawer: React.FC = () => {
   const onClickOrder = () => {
     dispatch(addToOrdered());
     setIsOrdered(true);
-    // dispatch(removeAll());
   };
   const GoBackToMain = () => {
     dispatch(removeAll());
@@ -40,6 +39,7 @@ const Drawer: React.FC = () => {
               onClick={() => dispatch(changeDrawer())}
               src={remove}
               className={styles.btnRemove}
+              alt="remove"
             />
           </h2>
           <div className={styles.items}>
@@ -61,7 +61,8 @@ const Drawer: React.FC = () => {
               </li>
             </ul>
             <button onClick={() => onClickOrder()} className={styles.btn}>
-              Оформити замовлення <img className={styles.arrow} src={arrow} />
+              Оформити замовлення{" "}
+              <img className={styles.arrow} src={arrow} alt="arrow" />
             </button>
           </div>
         </div>
@@ -78,17 +79,18 @@ const Drawer: React.FC = () => {
               onClick={() => dispatch(changeDrawer())}
               src={remove}
               className={styles.btnRemove}
+              alt="remove"
             />
           </h2>
           <div className={styles.root}>
-            <img src={apply} />
+            <img src={apply} alt="succes" />
             <h3 className={styles.subtitle}>Замовлення оформлене!</h3>
             <p className={styles.text}>
               Ваш заказ #{countOfOrder} скоро буде переданий доставці
             </p>
             <div className={styles.btnBlock}>
               <button className={styles.btn} onClick={() => GoBackToMain()}>
-                <img className={styles.arrow} src={arrow} />
+                <img className={styles.arrow} src={arrow} alt="go-back" />
                 Повернутися назад
               </button>
             </div>

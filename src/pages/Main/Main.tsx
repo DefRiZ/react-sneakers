@@ -1,16 +1,14 @@
 import React from "react";
 
-import Banner from "../../components/Banner/Banner";
+import styles from "./Main.module.scss";
 
+import Banner from "../../components/Banner/Banner";
 import Search from "../../components/Search/Search";
 import Item from "../../components/Item/Item";
-
-import styles from "./Main.module.scss";
+import Skeleton from "../../components/Item/Skeleton";
 
 import { useSelector } from "react-redux";
 import { fetchShoes } from "../../store/slices/shoeSlice";
-
-import Skeleton from "../../components/Item/Skeleton";
 import { RootState, useAppDispatch } from "../../store/store";
 import { CartItemProps } from "../../store/slices/cartSlice";
 

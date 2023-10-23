@@ -1,16 +1,16 @@
-import React from "react";
 import "./App.css";
 
 import Main from "./pages/Main/Main";
 import Drawer from "./components/Drawer/Drawer";
 import EmptyDrawer from "./components/EmptyDrawer/EmptyDrawer";
 import Header from "./components/Header/Header";
+import FavoritePage from "./pages/FavoritePage/FavoritePage";
+import OrderedPage from "./pages/OrderedPage/OrderedPage";
 
 import { useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
-import FavoritePage from "./pages/FavoritePage/FavoritePage";
-import OrderedPage from "./pages/OrderedPage/OrderedPage";
 import { RootState } from "./store/store";
+
 function App() {
   const { items } = useSelector((state: RootState) => state.cart);
   const { isOpen } = useSelector((state: RootState) => state.cart);

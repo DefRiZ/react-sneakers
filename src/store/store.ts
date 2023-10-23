@@ -2,6 +2,8 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import shoeSlice from "./slices/shoeSlice";
 import cartSlice from "./slices/cartSlice";
 import filterSlice from "./slices/filterSlice";
+import storage from "redux-persist/lib/storage";
+import bannerSlice from "./slices/bannerSlice";
 import {
   persistStore,
   persistReducer,
@@ -12,8 +14,6 @@ import {
   PURGE,
   REGISTER,
 } from "redux-persist";
-import storage from "redux-persist/lib/storage";
-import bannerSlice from "./slices/bannerSlice";
 import { useDispatch } from "react-redux";
 
 const rootReducer = combineReducers({

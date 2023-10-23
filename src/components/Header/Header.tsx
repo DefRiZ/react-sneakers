@@ -1,12 +1,12 @@
 import React from "react";
 
-import logo from "../../img/logo.png";
-
 import styles from "./Header.module.scss";
-import { useSelector } from "react-redux";
-import { changeDrawer, changeBurgerDrawer } from "../../store/slices/cartSlice";
+
+import logo from "../../img/logo.png";
 import BurgerDrawer from "./BurgerDrawer";
 
+import { useSelector } from "react-redux";
+import { changeDrawer, changeBurgerDrawer } from "../../store/slices/cartSlice";
 import { Link } from "react-router-dom";
 import { RootState, useAppDispatch } from "../../store/store";
 
@@ -22,7 +22,7 @@ const Header: React.FC = () => {
       <div className={styles.header}>
         <Link to="/">
           <div className={styles.blockRight}>
-            <img src={logo} className={styles.logo} />
+            <img src={logo} className={styles.logo} alt="main-logo" />
             <div className={styles.textBLock}>
               <h1 className={styles.title}>REACT SNEAKERS</h1>
               <span className={styles.subtitle}>

@@ -3,7 +3,6 @@ import React from "react";
 import styles from "./Item.module.scss";
 
 import add from "../../img/btn-plus.svg";
-// import added from "../../img/btn-checked.svg";
 import disable from "../../img/heart-unliked.svg";
 import able from "../../img/heart-liked.svg";
 
@@ -60,10 +59,11 @@ const Item: React.FC<CartItemProps> = ({
       <div className={styles.favorite}>
         <img
           src={isFavorite ? able : disable}
+          alt="favorite-label"
           onClick={() => addToFavoriteButton()}
         />
       </div>
-      <img className={styles.shoes} src={imageUrl} />
+      <img className={styles.shoes} src={imageUrl} alt="item" />
       <h3 className={styles.title}>{title}</h3>
       <div className={styles.purchase}>
         <div className={styles.info}>
@@ -71,7 +71,7 @@ const Item: React.FC<CartItemProps> = ({
           <span>{price} грн.</span>
         </div>
         <button className={styles.button}>
-          <img onClick={() => addButton()} src={add} />
+          <img onClick={() => addButton()} src={add} alt="add-button" />
         </button>
       </div>
     </div>
